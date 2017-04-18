@@ -8,7 +8,7 @@ import java.util.ArrayList;
  *
  * @author Rafael Marcílio <rafaelbatistamarcilio@gmail.com>
  */
-public class Evolucao {
+public class GerenciadorDePopulacao {
 
     /**
      * intervalo da populacao
@@ -28,7 +28,7 @@ public class Evolucao {
      * @param fimDoIntervaloDaPupulacao
      * @param numeroDeIndividuosDaPopulacaoInicial 
      */
-    public Evolucao(
+    public GerenciadorDePopulacao(
             int incioDoIntervaloDaPupulacao,
             int fimDoIntervaloDaPupulacao,
             int numeroDeIndividuosDaPopulacaoInicial) {

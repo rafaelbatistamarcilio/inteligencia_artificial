@@ -3,7 +3,7 @@
  */
 package br.com.algoritmogenetico.main;
 
-import br.com.algoritmogenetico.utils.Evolucao;
+import br.com.algoritmogenetico.utils.GerenciadorDePopulacao;
 
 /**
  *
@@ -15,9 +15,9 @@ public class AlgoritmoGenetico {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Evolucao evolucao = new Evolucao(0, 31, 4);
+        GerenciadorDePopulacao gerenciadorDePopulacao = new GerenciadorDePopulacao(0, 31, 4);
         
-        evolucao.definirPopulacaoInicial();
+        gerenciadorDePopulacao.definirPopulacaoInicial();
     }
     
 }
