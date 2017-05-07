@@ -1,22 +1,22 @@
 package br.com.algoritmogenetico.utils;
 
-import java.util.Random;
-
 /**
- *
  * @author Rafael Marcílio <rafaelbatistamarcilio@gmail.com>
  */
 public class Individuo {
-    
+
+    /**
+     * descrição do indivíduo Ex: 0
+     */
     private int descricao;
     private String cadeia;
     private double fitness;
     private double participacao;
-    private double acumulado;
-    
-    
-    public Individuo(){
-        
+    private double acumuladoMinimo;
+    private double acumuladoMaximo;
+
+    public Individuo() {
+
     }
 
     /**
@@ -78,37 +78,57 @@ public class Individuo {
     /**
      * @return the acumulado
      */
-    public double getAcumulado() {
-        return acumulado;
+    public double getAcumuladoMinimo() {
+        return acumuladoMinimo;
     }
 
     /**
-     * @param acumulado the acumulado to set
+     * @param acumuladoMinimo the acumulado to set
      */
-    public void setAcumulado(double acumulado) {
-        this.acumulado = acumulado;
+    public void setAcumuladoMinimo(double acumuladoMinimo) {
+        this.acumuladoMinimo = acumuladoMinimo;
     }
-    
+
+    public double getAcumuladoMaximo() {
+        return acumuladoMaximo;
+    }
+
+    public void setAcumuladoMaximo(double acumuladoMaximo) {
+        this.acumuladoMaximo = acumuladoMaximo;
+    }
+
     /**
-     * dado um intervalo [m,n], retorna a instância de um indivíduo com descrição e cadeia de bits
+     * dado um intervalo [m,n], retorna a instância de um indivíduo com
+     * descrição e cadeia de bits
+     *
      * @param inicioIntervalo
      * @param fimIntervalo
-     * @return 
+     * @return
      */
-    public static Individuo gerarIndividuoAleatorio(int inicioIntervalo, int fimIntervalo){
-        Individuo individuo = new Individuo();        
-        
-        int aleatorio = (int) (Math.random() * (inicioIntervalo - fimIntervalo)) + fimIntervalo;
-        
+    public static Individuo gerarIndividuoAleatorio(int inicioIntervalo, int fimIntervalo) {
+        Individuo individuo = new Individuo();
+
+        int aleatorio = GerenciadorDePopulacao.getAleatorioInt(inicioIntervalo,fimIntervalo);
+
         individuo.setDescricao(aleatorio);
-        individuo.setCadeia( Integer.toBinaryString(aleatorio) );
         
+        String descricaoEmBinario = Integer.toBinaryString(aleatorio);
+        String zerosAEsquerda = "";
+        int bitsNecessarios = (int) Math.sqrt(fimIntervalo - inicioIntervalo + 1) ;
+        //completar os zeros a esquerda da cadeia
+        for (int i = 0; i < bitsNecessarios - descricaoEmBinario.length(); i++) {
+            zerosAEsquerda+="0";
+        }
+        String cromossomos = zerosAEsquerda+descricaoEmBinario;
+        
+        individuo.setCadeia(cromossomos);
+
         return individuo;
     }
-    
-    public Individuo evoluir(){
+
+    public Individuo evoluir() {
         Individuo novoIndividuo = new Individuo();
-        
+
         return novoIndividuo;
     }
 }
